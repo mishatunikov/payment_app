@@ -1,0 +1,11 @@
+[tool.black]
+line-length = 79
+skip-string-normalization = 1
+target-version = ['py39']
+
+[tool.isort]
+py_version = 39
+src_paths = ['payment_app',]
+profile = 'black'
+skip = ['migrations']
+line_length=79
