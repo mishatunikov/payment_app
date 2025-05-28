@@ -7,5 +7,5 @@ target-version = ['py39']
 py_version = 39
 src_paths = ['payment_app',]
 profile = 'black'
-skip = ['migrations']
+skip = ['migrations', 'venv',]
 line_length=79
