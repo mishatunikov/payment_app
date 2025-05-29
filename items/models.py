@@ -82,8 +82,8 @@ class Discount(TaxDiscountBase):
 
     percent_off = models.PositiveSmallIntegerField(
         validators=[
-            MinValueValidator(consts.MAX_DISCOUNT_PERCENT),
-            MaxValueValidator(consts.MIN_DISCOUNT_PERCENT),
+            MinValueValidator(consts.MIN_DISCOUNT_PERCENT),
+            MaxValueValidator(consts.MAX_DISCOUNT_PERCENT),
         ],
         verbose_name='процент скидки',
     )
@@ -93,7 +93,7 @@ class Discount(TaxDiscountBase):
         verbose_name_plural = 'скидки'
 
     def __str__(self):
-        return f'{self.name} ({self.percent_off}%'
+        return f'{self.name} ({self.percent_off}%)'
 
 
 class Tax(TaxDiscountBase):
