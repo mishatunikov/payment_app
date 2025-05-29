@@ -20,7 +20,9 @@ class TaxDiscountBase(BaseName):
     """Abstract model with stripe_id and name fields."""
 
     stripe_id = models.CharField(
-        max_length=consts.STRIPE_ID_MAX_LENGTH, blank=True, null=True,
+        max_length=consts.STRIPE_ID_MAX_LENGTH,
+        blank=True,
+        null=True,
     )
 
     class Meta(BaseName.Meta):
@@ -55,6 +57,12 @@ class Order(models.Model):
 
     items = models.ManyToManyField(
         Item, related_name='orders', verbose_name='товары'
+    )
+    discounts = models.ManyToManyField(
+        'Discount', blank=True, related_name='orders', verbose_name='скидки'
+    )
+    taxes = models.ManyToManyField(
+        'Tax', blank=True, related_name='orders', verbose_name='налоги'
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания'
