@@ -24,3 +24,21 @@ class Item(models.Model):
         verbose_name = 'товар'
         verbose_name_plural = 'Товары'
         ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
+# class Order(models.Model):
+#     item = models.ManyToManyField(
+#         Item, related_name='orders', verbose_name='товары'
+#     )
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     class Meta:
+#         verbose_name = 'заказ'
+#         verbose_name_plural = 'Заказы'
+#         ordering = ('-created_at',)
+#
+#     def __str__(self):
+#         return f'Заказ №{self.pk}'
