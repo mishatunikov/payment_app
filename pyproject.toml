@@ -5,7 +5,7 @@ target-version = ['py39']
 
 [tool.isort]
 py_version = 39
-src_paths = ['payment_app', 'api', 'items']
+src_paths = ['payment_app', 'api', 'items', '.']
 profile = 'black'
 skip = ['migrations', 'venv',]
 line_length=79
