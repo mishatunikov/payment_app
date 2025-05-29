@@ -29,16 +29,18 @@ class Item(models.Model):
         return self.name
 
 
-# class Order(models.Model):
-#     item = models.ManyToManyField(
-#         Item, related_name='orders', verbose_name='товары'
-#     )
-#     created_at = models.DateTimeField(auto_now_add=True)
-#
-#     class Meta:
-#         verbose_name = 'заказ'
-#         verbose_name_plural = 'Заказы'
-#         ordering = ('-created_at',)
-#
-#     def __str__(self):
-#         return f'Заказ №{self.pk}'
+class Order(models.Model):
+    items = models.ManyToManyField(
+        Item, related_name='orders', verbose_name='товары'
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='дата создания'
+    )
+
+    class Meta:
+        verbose_name = 'заказ'
+        verbose_name_plural = 'Заказы'
+        ordering = ('-created_at',)
+
+    def __str__(self):
+        return f'Заказ №{self.pk}'
