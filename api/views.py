@@ -149,8 +149,8 @@ class MakeOrderView(APIView, StripeSessionMixin):
         instance = get_object_or_404(Order, pk=pk)
         session = self.get_session(
             instance.items.all(),
-            success_url='http://localhost:8000/api/v1/order/{}/'.format(pk),
-            cancel_url='http://localhost:8000/api/v1/order/{}/'.format(pk),
+            success_url=f'{config.host.domain_name}/api/v1/order/{pk}/',
+            cancel_url=f'{config.host.domain_name}/api/v1/order/{pk}/',
             discounts=list(
                 instance.discounts.values_list('stripe_id', flat=True)
             ),

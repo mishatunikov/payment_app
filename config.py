@@ -4,6 +4,10 @@ from environs import Env
 
 
 @dataclass
+class HostSettings:
+    domain_name: str
+
+@dataclass
 class DjangoSettings:
     debug: bool
     secret_key: str
@@ -19,6 +23,7 @@ class StripeSettings:
 class Config:
     django: DjangoSettings
     stripe: StripeSettings
+    host: HostSettings
 
 
 def load_config() -> Config:
@@ -32,6 +37,9 @@ def load_config() -> Config:
             secret_key=env.str('STRIPE_SECRET_KEY'),
             published_key=env.str('STRIPE_PUBLISHED_KEY'),
         ),
+        host=HostSettings(
+            domain_name=env.str('DOMAIN_NAME')
+        )
     )
 
 
