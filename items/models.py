@@ -56,13 +56,13 @@ class Order(models.Model):
     """Order model."""
 
     items = models.ManyToManyField(
-        Item, related_name='orders', verbose_name='товары'
+        Item, related_name='order', verbose_name='товары'
     )
     discounts = models.ManyToManyField(
-        'Discount', blank=True, related_name='orders', verbose_name='скидки'
+        'Discount', blank=True, related_name='order', verbose_name='скидки'
     )
     taxes = models.ManyToManyField(
-        'Tax', blank=True, related_name='orders', verbose_name='налоги'
+        'Tax', blank=True, related_name='order', verbose_name='налоги'
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания'
